@@ -19,7 +19,7 @@ public class PageElements extends BasePage {
     public void clickWebTables() {
         WebDriverWait wait = new WebDriverWait(base_page_driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(selectionWebTables));
-       log.info("web table selectiooné");
         base_page_driver.findElement(selectionWebTables).click();
+        log.info("web table selectionnée avec succés");
     }
 }

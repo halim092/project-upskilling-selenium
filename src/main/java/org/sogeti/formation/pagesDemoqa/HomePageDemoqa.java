@@ -26,7 +26,8 @@ public class HomePageDemoqa extends BasePage {
     public void clickElements() {
         WebDriverWait wait = new WebDriverWait(base_page_driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(selectionElements));
-        log.info("entrer sur Elements");
+
         base_page_driver.findElement(selectionElements).click();
+        log.info("entrer sur Elements avec succés ");
     }
 }
