@@ -1,7 +1,8 @@
-package org.example.Page;
+package org.sogeti.formation.page;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.sogeti.formation.page.HomePage;
 
 public class LoginPage {
     WebDriver driver;
@@ -23,9 +24,9 @@ public class LoginPage {
 
 
     }
-    public org.example.Page.HomePage login(){
+    public HomePage login(){
         driver.findElement(LoginID).click();
-        return new org.example.Page.HomePage(driver);
+        return new HomePage(driver);
 
     }
 

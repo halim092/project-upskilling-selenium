@@ -1,5 +1,9 @@
-/* package ffff;
+package testsSuite;
 
+import io.cucumber.java.After;
+import io.cucumber.java.en.Given;
+import lombok.Getter;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.sogeti.formation.page.CartPage;
@@ -11,53 +15,27 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.sql.Driver;
-
+@Getter
+@Log4j2
 public class TestExercice {
 
-    //Les drivers
-    private static final String URL ="https://www.saucedemo.com";
-    WebDriver driver ;
+    WebDriver driver;
 
-
-
-
-
-    //Methode before
-    @BeforeMethod
-    public void setup (){
+    private void init() {
+        //System.setProperty("webdriver.edge.driver", "src/main/resources/msedgedriver.exe");
         driver = new FirefoxDriver();
-        driver.get(URL);
         driver.manage().window().maximize();
-        System.out.println(URL + " -> opened successfully");
-
-    }
-    @Test
-    public void test(){
-        //Arrange
-        String user = "standard_user";
-        String pwd ="secret_sauce";
-        //Act
-        //HomePage hp = new HomePage(driver);
-        LoginPage lp =new LoginPage(driver);
-        CartPage cp =lp.inputUsername(username)
-        .inputPassword(pwd)
-        .login();
-
-        //hp.addButton();
-
-        //Assertion
-        Assert.assertEquals();
-
-
-
-
-
     }
 
-    @AfterMethod
-    public void teardown(){
+    @Given("je vais sur la page d'acceuil {string}")
+    public void je_vais_sur_la_page_d_acceuil(String string) {
+        init();
+        driver.get(string);
+    }
+
+    @After
+    public void Teardown() {
+        log.info("Test terminé");
         driver.quit();
-        System.out.println("Teardown successful !");
     }
-} */
-
+}

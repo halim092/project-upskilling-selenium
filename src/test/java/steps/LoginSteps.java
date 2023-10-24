@@ -1,19 +1,39 @@
 package steps;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.sogeti.formation.page.LoginPage;
 
 public class LoginSteps {
-    org.example.Page.LoginPage pageLogin;
+    LoginPage pageLogin;
 
     public LoginSteps(StandardSteps std) {
 
         WebDriver driver = std.getDriver();
-        pageLogin = PageFactory.initElements(driver , org.example.Page.LoginPage.class);
+        pageLogin = PageFactory.initElements(driver, LoginPage.class);
     }
-    @Given("je vais sur la page d'accueil {string}")
-    public void jeVaisSurLaPageAccueil(String url){
+
+
+
+    @And("j'entre un username {string}")
+    public void j_entre_un_username(String string) {
+        pageLogin.inputUsername( string);
+
+        }
+
+    @And("j'entre un mot de passe {string}")
+    public void j_entre_un_mdp(String string) {
+        pageLogin.inputPassword(string);
 
     }
+
+    @When("je clique sur le bouton login")
+    public void je_clique_sur_le_bouton_login() {
+      pageLogin.login();
+    }
+
+
 }

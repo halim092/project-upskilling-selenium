@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
 @Log4j2
 public class HomePage {
@@ -33,5 +34,8 @@ public class HomePage {
         driver.findElement(cart).click();
         return new CartPage(driver);
 
+    }
+    public void checkPageTitle(String titreAttendu){
+        Assert.assertEquals(driver.getTitle(),titreAttendu);
     }
 }
