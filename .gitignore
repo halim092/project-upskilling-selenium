@@ -337,3 +337,4 @@ fabric.properties
 
 # My files
 src/test/resources/features/*.feature
+src/main/resources

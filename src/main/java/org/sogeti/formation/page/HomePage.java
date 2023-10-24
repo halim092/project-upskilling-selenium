@@ -4,23 +4,34 @@ import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-/*
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
 @Log4j2
 public class HomePage {
     WebDriver driver;
+    @FindBy(id="add-to-cart-sauce-labs-backpack")
+    WebElement bouttonAddtoCart;
+
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
+        PageFactory.initElements(driver,this);
+
     }
 
-    By addToCartId = By.id("add-to-cart-sauce-labs-backpack");
+    // By AddToCartID= By.id("add-to-cart-sauce-labs-backpack");
+    By cart= By.className("shopping_cart_link");
+    public HomePage addTocart(){
+        log.info("Add bachpack to cart");
+        bouttonAddtoCart.click();
+        return this;
 
-
-
-    public void addButton() {
-        log.info();
-        WebElement addButton = driver.findElement(addToCartId);
-        addButton.click();
-        return;
     }
-} */
+    public CartPage goTocart(){
+        log.info("openning cart page");
+        driver.findElement(cart).click();
+        return new CartPage(driver);
+
+    }
+}
